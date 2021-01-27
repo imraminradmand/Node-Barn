@@ -9,6 +9,8 @@ const server = http.createServer((req, res) => {
         res.end('overview')
     } else if (pathName === '/product') {
         res.end('Product')
+    } else if (pathName ==='/api'){
+        res.end('api')
     } else {
         res.writeHead(404, {
             'Content-type' : 'text/html'
