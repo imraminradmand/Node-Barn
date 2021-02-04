@@ -29,9 +29,9 @@ const cardTemplate = fs.readFileSync(`${__dirname}/templates/card.html`, 'utf-8'
 const dataObj = JSON.parse(data)
 
 const server = http.createServer((req, res) => {
-    const pathName = req.url
+    const { query, pathname } = url.parse(req.url, true)
     // overview page
-    if (pathName === '/overview' || pathName === '/') {
+    if (pathname === '/overview' || pathname === '/') {
         res.writeHead(200, {
             "Content-type": "text/html"
         })
@@ -42,11 +42,11 @@ const server = http.createServer((req, res) => {
         res.end(actualOverviewPage)
 
     //products page
-    } else if (pathName === '/product') {
+    } else if (pathname === '/product') {
         res.end('Product')
 
     //API
-    } else if (pathName ==='/api'){
+    } else if (pathname ==='/api'){
         res.writeHead(200, {
             "Content-type": "application/json"
         })
